@@ -1,2 +1,52 @@
-set nu
+"--------------------------------------------------------------------------------------
+" Plugins
+"--------------------------------------------------------------------------------------
+
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(data_dir . '/plugins')
+
+source ~/.vim/plugins_config/commentary.vim
+source ~/.vim/plugins_config/dracula.vim
+source ~/.vim/plugins_config/fugitive.vim
+source ~/.vim/plugins_config/repeat.vim
+source ~/.vim/plugins_config/surround.vim
+source ~/.vim/plugins_config/targets.vim
+
+call plug#end()
+
+"--------------------------------------------------------------------------------------
+" General settings
+"--------------------------------------------------------------------------------------
+
+" Ignore color scheme not found error before it gets installed
+silent! colorscheme dracula
+set termguicolors
+set shiftwidth=4
+set tabstop=4
 set relativenumber
+set number
+set showcmd
+set incsearch
+set hlsearch
+syntax on
+
+"--------------------------------------------------------------------------------------
+" Key mappings
+"--------------------------------------------------------------------------------------
+
+map <Space> <Leader>
+
+nmap <leader>ve :edit ~/.vimrc<cr>
+nmap <leader>vr :source ~/.vimrc<cr>
+
+nmap <leader>k :nohlsearch<cr>
+
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
+

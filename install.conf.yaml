@@ -1,13 +1,16 @@
 - defaults:
     link:
       relink: true
+      create: true
 
 - clean: ['~']
 
 - link:
+    ~/.vim/plugins_config: vim/plugins_config
     ~/.vimrc: vim/vimrc
     ~/.config/kitty: kitty
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [./git/set-gitconfig.sh, Configuring Git]
+  - [vim +PlugUpdate +PlugClean! +qa, Installing and updating vim plugins]
