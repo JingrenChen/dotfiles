@@ -9,8 +9,11 @@
     ~/.vim/plugins_config: vim/plugins_config
     ~/.vimrc: vim/vimrc
     ~/.config/kitty: kitty
+    ~/.tmux/plugins/tpm: tmux/plugins/tpm
+    ~/.tmux.conf: tmux/tmux.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [./git/set-gitconfig.sh, Configuring Git]
   - [vim +PlugUpdate +PlugClean! +qa, Installing and updating vim plugins]
+  - [~/.tmux/plugins/tpm/scripts/install_plugins.sh >/dev/null 2>&1, Installing tmux plugins]
