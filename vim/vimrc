@@ -14,9 +14,12 @@ call plug#begin(data_dir . '/plugins')
 source ~/.vim/plugins_config/commentary.vim
 source ~/.vim/plugins_config/dracula.vim
 source ~/.vim/plugins_config/fugitive.vim
+source ~/.vim/plugins_config/fzf.vim
+source ~/.vim/plugins_config/polyglot.vim
 source ~/.vim/plugins_config/repeat.vim
 source ~/.vim/plugins_config/surround.vim
 source ~/.vim/plugins_config/targets.vim
+source ~/.vim/plugins_config/tmux-navigator.vim
 
 call plug#end()
 
@@ -35,6 +38,8 @@ set showcmd
 set incsearch
 set hlsearch
 syntax on
+" Fix syntax highlight in tmux
+set term=xterm-256color
 
 "--------------------------------------------------------------------------------------
 " Key mappings
