@@ -20,6 +20,7 @@ source ~/.vim/plugins_config/repeat.vim
 source ~/.vim/plugins_config/surround.vim
 source ~/.vim/plugins_config/targets.vim
 source ~/.vim/plugins_config/tmux-navigator.vim
+source ~/.vim/plugins_config/tmux-resizer.vim
 
 call plug#end()
 
@@ -55,3 +56,10 @@ nmap <leader>k :nohlsearch<cr>
 " Allow gf to open non-existent files
 map gf :edit <cfile><cr>
 
+" Use meta-h/j/k/l to resize vim splits & tmux panes seamlessly
+" Fix meta(alt)-h/j/k/l mappings not working
+" :h :map-alt-keys
+execute "set <M-h>=\eh"
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
+execute "set <M-l>=\el"
