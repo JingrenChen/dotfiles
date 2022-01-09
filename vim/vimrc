@@ -11,16 +11,22 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
+source ~/.vim/plugins_config/airline.vim
+source ~/.vim/plugins_config/ale.vim
 source ~/.vim/plugins_config/commentary.vim
 source ~/.vim/plugins_config/dracula.vim
 source ~/.vim/plugins_config/fugitive.vim
 source ~/.vim/plugins_config/fzf.vim
+source ~/.vim/plugins_config/gitgutter.vim
+source ~/.vim/plugins_config/heritage.vim
 source ~/.vim/plugins_config/polyglot.vim
 source ~/.vim/plugins_config/repeat.vim
+source ~/.vim/plugins_config/sleuth.vim
 source ~/.vim/plugins_config/surround.vim
 source ~/.vim/plugins_config/targets.vim
 source ~/.vim/plugins_config/tmux-navigator.vim
 source ~/.vim/plugins_config/tmux-resizer.vim
+source ~/.vim/plugins_config/unimpaired.vim
 
 call plug#end()
 
@@ -31,16 +37,24 @@ call plug#end()
 " Ignore color scheme not found error before it gets installed
 silent! colorscheme dracula
 set termguicolors
-set shiftwidth=4
-set tabstop=4
 set relativenumber
 set number
 set showcmd
 set incsearch
 set hlsearch
 syntax on
+set laststatus=2
+set showtabline=2
+set guioptions-=e
+set cursorline
+set scrolloff=5
+
 " Fix syntax highlight in tmux
 set term=xterm-256color
+
+" Open splits to the right and buttom side
+set splitright
+set splitbelow
 
 "--------------------------------------------------------------------------------------
 " Key mappings
@@ -54,7 +68,12 @@ nmap <leader>vr :source ~/.vimrc<cr>
 nmap <leader>k :nohlsearch<cr>
 
 " Allow gf to open non-existent files
+" Need heritage.vim to work well
 map gf :edit <cfile><cr>
+
+" Tab navigation
+nnoremap H :tabnext<cr>
+nnoremap L :tabprev<cr>
 
 " Use meta-h/j/k/l to resize vim splits & tmux panes seamlessly
 " Fix meta(alt)-h/j/k/l mappings not working
@@ -63,3 +82,6 @@ execute "set <M-h>=\eh"
 execute "set <M-j>=\ej"
 execute "set <M-k>=\ek"
 execute "set <M-l>=\el"
+" Fix ESC response time caused by above mapping
+" https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=0
