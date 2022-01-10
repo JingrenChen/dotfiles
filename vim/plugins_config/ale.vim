@@ -21,3 +21,4 @@ nnoremap gdt :ALEGoToDefinition -tab<cr>
 nnoremap gds :ALEGoToDefinition -split<cr>
 nnoremap gdv :ALEGoToDefinition -vsplit<cr>
 nnoremap <leader>i :ALEHover<cr>
+nnoremap <F3> :ALEFix<cr>

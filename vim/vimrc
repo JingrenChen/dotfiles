@@ -15,14 +15,19 @@ source ~/.vim/plugins_config/airline.vim
 source ~/.vim/plugins_config/ale.vim
 source ~/.vim/plugins_config/commentary.vim
 source ~/.vim/plugins_config/dracula.vim
+source ~/.vim/plugins_config/floaterm.vim
+source ~/.vim/plugins_config/folding.vim
 source ~/.vim/plugins_config/fugitive.vim
 source ~/.vim/plugins_config/fzf.vim
 source ~/.vim/plugins_config/gitgutter.vim
+source ~/.vim/plugins_config/goyo.vim
 source ~/.vim/plugins_config/heritage.vim
 source ~/.vim/plugins_config/polyglot.vim
 source ~/.vim/plugins_config/repeat.vim
 source ~/.vim/plugins_config/sleuth.vim
+source ~/.vim/plugins_config/smooth-scroll.vim
 source ~/.vim/plugins_config/surround.vim
+source ~/.vim/plugins_config/tagbar.vim
 source ~/.vim/plugins_config/targets.vim
 source ~/.vim/plugins_config/tmux-navigator.vim
 source ~/.vim/plugins_config/tmux-resizer.vim
@@ -47,7 +52,11 @@ set laststatus=2
 set showtabline=2
 set guioptions-=e
 set cursorline
-set scrolloff=5
+set scrolloff=8
+set sidescrolloff=8
+set clipboard=unnamedplus
+set list
+set listchars=tab:▸\ ,trail:·
 
 " Fix syntax highlight in tmux
 set term=xterm-256color
@@ -55,6 +64,14 @@ set term=xterm-256color
 " Open splits to the right and buttom side
 set splitright
 set splitbelow
+
+" Keep it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Open the current file in the default program
+nmap <leader>x :!xdg-open %<cr><cr>
 
 "--------------------------------------------------------------------------------------
 " Key mappings
@@ -72,8 +89,15 @@ nmap <leader>k :nohlsearch<cr>
 map gf :edit <cfile><cr>
 
 " Tab navigation
-nnoremap H :tabnext<cr>
-nnoremap L :tabprev<cr>
+nnoremap H :tabprev<cr>
+nnoremap L :tabnext<cr>
+
+" Make Y behave like the other capitals (C, D, etc.)
+nnoremap Y y$
+
+" Insert a trailing ; or , from insert mode easily
+imap ;; <Esc>A;<Esc>
+imap ,, <Esc>A,<Esc>
 
 " Use meta-h/j/k/l to resize vim splits & tmux panes seamlessly
 " Fix meta(alt)-h/j/k/l mappings not working
