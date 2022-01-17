@@ -14,6 +14,7 @@ call plug#begin(data_dir . '/plugins')
 source ~/.vim/plugins_config/airline.vim
 source ~/.vim/plugins_config/ale.vim
 source ~/.vim/plugins_config/commentary.vim
+source ~/.vim/plugins_config/delimitMate.vim
 source ~/.vim/plugins_config/dracula.vim
 source ~/.vim/plugins_config/floaterm.vim
 source ~/.vim/plugins_config/folding.vim
@@ -26,12 +27,14 @@ source ~/.vim/plugins_config/polyglot.vim
 source ~/.vim/plugins_config/repeat.vim
 source ~/.vim/plugins_config/sleuth.vim
 source ~/.vim/plugins_config/smooth-scroll.vim
+source ~/.vim/plugins_config/startify.vim
 source ~/.vim/plugins_config/surround.vim
 source ~/.vim/plugins_config/tagbar.vim
 source ~/.vim/plugins_config/targets.vim
 source ~/.vim/plugins_config/tmux-navigator.vim
 source ~/.vim/plugins_config/tmux-resizer.vim
 source ~/.vim/plugins_config/unimpaired.vim
+source ~/.vim/plugins_config/vim-lsp.vim
 
 call plug#end()
 
@@ -48,6 +51,8 @@ set showcmd
 set incsearch
 set hlsearch
 syntax on
+set wildmenu
+set wildmode=longest:full,full
 set laststatus=2
 set showtabline=2
 set guioptions-=e
