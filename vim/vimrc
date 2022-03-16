@@ -114,3 +114,27 @@ execute "set <M-l>=\el"
 " Fix ESC response time caused by above mapping
 " https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set timeoutlen=1000 ttimeoutlen=0
+
+" For example, the following will map <Tab> to either actually insert a <Tab> if
+" the current line is currently only whitespace, or start/continue a CTRL-N
+" completion operation: >
+function! CleverTab()
+   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+      return "\<Tab>"
+   else
+      return "\<C-N>"
+   endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
+
+
+let g:lsp_settings = {
+\   'pylsp': {
+\     'workspace_config': {
+\       'pylsp': {
+\         'configurationSources': ['flake8'],
+\         'pycodestyle.enabled': v:false,
+\       }
+\     }
+\   },
+\}

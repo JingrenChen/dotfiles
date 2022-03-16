@@ -6,7 +6,6 @@ Plug 'dense-analysis/ale'
 
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
-\   'python': ['black'],
 \}
 
 " pip install python-lsp-server

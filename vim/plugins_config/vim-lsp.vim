@@ -13,6 +13,22 @@ if executable('pylsp')
         \ })
 endif
 
+" TODO: make sure these settings take effect
+let g:lsp_settings = {
+\   'pylsp': {
+\     'workspace_config': {
+\       'pylsp': {
+\         'configurationSources': ['pylint'],
+\         'plugins': {
+\           'pylint': {'enabled': v:true},
+\         },
+\       }
+\     }
+\   },
+\}
+
+" let g:lsp_diagnostics_echo_cursor = 1
+
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -31,11 +47,6 @@ function! s:on_lsp_buffer_enabled() abort
     autocmd User lsp_float_opened nnoremap <buffer> <expr><c-b> lsp#scroll(-4)
     autocmd User lsp_float_closed silent! nunmap <buffer> <c-f>
     autocmd User lsp_float_closed silent! nunmap <buffer> <c-b>
-    " Fix <Esc> broken when call :LspHover (F3/8)
-    " https://github.com/prabirshrestha/vim-lsp/issues/1263
-    " nmap <plug>() <Plug>(lsp-float-close)
-    " TODO: use Esc to close float
-    autocmd User lsp_float_closed silent! nunmap <buffer> <Esc>
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
@@ -53,8 +64,7 @@ set foldmethod=expr
   \ foldexpr=lsp#ui#vim#folding#foldexpr()
   \ foldtext=lsp#ui#vim#folding#foldtext()
 
-
 " Tab completion
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
