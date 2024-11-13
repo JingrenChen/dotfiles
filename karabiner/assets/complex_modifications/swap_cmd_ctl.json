@@ -1,0 +1,55 @@
+{
+  "title": "Swap Left Control/Command only in Kitty",
+  "rules": [
+    {
+      "description": "Left Command to Control",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_command"
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^net\\.kovidgoyal\\.kitty$",
+                "^com\\.vmware\\.horizon$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Left Control to Command",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_control"
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^net\\.kovidgoyal\\.kitty$",
+                "^com\\.vmware\\.horizon$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
